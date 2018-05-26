@@ -16,9 +16,9 @@ public class FileProprecess {
  * 两个参数，一个是要被处理的源文件
  * 另一个是吃力后的文件输出路径
  */
-public static void preprocess(File file,String output) {
+public static void preprocess(File file,String outputDir) {
 	try {
-		splitToSmallFiles(charactorProcess(file,outputDir+"output.all"),outputDir);
+		splitToSmallFiles(charactorProcess(file, outputDir + "output.all"), outputDir );
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
@@ -58,9 +58,9 @@ public static void splitToSmallFiles(File file,String outputpath) throws IOExcep
 	BufferedWriter writer = null;
 	BufferedReader reader = new BufferedReader(new FileReader(file));
 	StringBuffer buffer = new StringBuffer();
-	String Line = reader.readLine();
+	String line = reader.readLine();
 	
-	while  (line != null)  {
+	while (line != null)  {
 		buffer.append(line).append("\r\n");
 		if (buffer.toString().getBytes().length >= MAX_SIZE)
 		{
@@ -88,8 +88,8 @@ private static String replace(String line)  {
 	int length = line.length();
 	for (int i = 0 ; i<length; i++)  {
 		String charact = line.substring(i, i + 1);
-		if (map.get(charat) != null) {
-			line = line.replace(charat,(String) map.get(charat));
+		if (map.get(charact) != null) {
+			line = line.replace(charact,(String) map.get(charact));
 			
 		}
 	}
